@@ -8,10 +8,10 @@ public class DriverLocation extends Location{
 		super(x,y);
 	}
 
-	double getDistance(Customer customer){
-		int customerX = customer.location.x;
-		int customerY = customer.location.y;
+	// double getDistance(Customer customer){
+	// 	int customerX = customer.location.x;
+	// 	int customerY = customer.location.y;
 
-		return Math.sqrt(Math.pow((x - customerX), 2) + Math.pow((y - customerY), 2));
-	}
+	// 	return Math.sqrt(Math.pow((x - customerX), 2) + Math.pow((y - customerY), 2));
+	// }
 }

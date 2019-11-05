@@ -11,6 +11,10 @@ class BankAccount{
 		balance = RandomGenerators.generateBankBalance();
 	}
 
+	boolean verifyPin(int pin){
+		return (pin == this.pin);
+	}
+
 	double getBankBalance(int pin) throws InvalidPINException{
 		if(pin == this.pin){
 			return balance;
@@ -23,6 +27,7 @@ class BankAccount{
 	boolean transferMoney(double transferValue) throws InadequateBankBalanceException{
 		if (transferValue <= balance){
 			balance -= transferValue;
+			return true;
 		} else{
 			InadequateBankBalanceException exception = new InadequateBankBalanceException();
 			throw exception;
