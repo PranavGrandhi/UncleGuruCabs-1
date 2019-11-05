@@ -8,6 +8,6 @@ class RandomLocGenerator{
 	ResultSet rs = null;
 
 	RandomLocGenerator(){
-
+		
 	}
 }
