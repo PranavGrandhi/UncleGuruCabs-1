@@ -3,11 +3,15 @@ package Location;
 import java.sql.*;
 
 class RandomLocGenerator{
-	Connection conn;
-	Statement stmt = null;
-	ResultSet rs = null;
+	// Connection conn;
+	// Statement stmt = null;
+	// ResultSet rs = null;
 
-	RandomLocGenerator(){
+	// RandomLocGenerator(){
 		
+	// }
+
+	public void simply(){
+		System.out.println("Yet to be finished!!!!!!");
 	}
 }

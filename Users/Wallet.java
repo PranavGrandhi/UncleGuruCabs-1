@@ -19,4 +19,17 @@ public class Wallet{
 			return false;
 		}
 	}
+
+	boolean makePayment(double amount){
+		if(balance >= amount){
+			balance -= amount;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	boolean receivePayment(double amount){
+		balance += amount;
+	}
 }

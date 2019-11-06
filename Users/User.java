@@ -11,20 +11,22 @@ abstract class User{
 		this.password = password;
 	}
 
-	String getUniqueId() {
+	public String getUniqueId() {
 		return uniqueId;
 	}
-	String getUsername() {
+	public String getUsername() {
 		return userName;
 	}
-	String getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	String getEmailId() {
+	public String getEmailId() {
 		return emailId;
 	}
-	String getPassword() {
-		return password;
+
+	
+	boolean testPassword(String password) {
+		return (password == this.password);
 	}
 
 	void setPassword(String currentPassword, String newPassword){

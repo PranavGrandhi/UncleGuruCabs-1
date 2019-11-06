@@ -1,4 +1,5 @@
 import Users.*;
+import Location.*;
 import java.util.*;
 
 class Demo{
@@ -10,14 +11,18 @@ class Demo{
 
 
 		////////// TESTING CUSTOMER CLASS //////////
-		Customer customer = Customer.createCustomer("userid", "username", "phone", "emailID", "password", 1234);
+		Customer customer = Customer.createCustomer("userid", "username", "phone", "emailID", "password", 1234, 2, 2);
 		System.out.println("\nCustomer Created.");
 		System.out.println(customer);
 
 		////////// TESTING DRIVER CLASS //////////
-		Driver driver = Driver.createDriver("userid", "username", "phone", "emailID", "password");
+		Driver driver = Driver.createDriver("userid", "username", "phone", "emailID", "password", 4, 4);
 		System.out.println("\nDriver Created.");
 		System.out.println(driver);
+
+
+		System.out.println(customer.getDriverDistance(driver));
+		System.out.println(driver.getCustomerDistance(customer));
 
 	}
 }

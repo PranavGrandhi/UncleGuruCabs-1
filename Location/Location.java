@@ -1,5 +1,4 @@
 package Location;
-import Users.*;
 
 abstract class Location{
 	private int x, y;
@@ -8,4 +7,13 @@ abstract class Location{
 		this.x = x;
 		this.y = y;
 	}
+
+	public int getX(){
+		return x;
+	}
+
+	public int getY(){
+		return y;
+	}
+
 }

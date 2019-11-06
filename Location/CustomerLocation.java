@@ -2,16 +2,15 @@ package Location;
 import Users.*;
 
 
-publlic class CustomerLocation extends Location{
+public class CustomerLocation extends Location{
 
-	CustomerLocation(int x, int y){
+	public CustomerLocation(int x, int y){
 		super(x,y);
 	}
 
-	// double getDistance(Driver driver){
-	// 	int driverX = driver.location.x;
-	// 	int driverY = driver.location.y;
-
-	// 	return Math.sqrt(Math.pow((x - driverX), 2) + Math.pow((y - driverY), 2));
-	// }
+	public double getDistance(Driver driver){
+		int driverX = driver.driverLocation.getX();
+		int driverY = driver.driverLocation.getY();
+		return Math.sqrt(Math.pow((super.getX() - driverX), 2) + Math.pow((super.getY() - driverY), 2));
+	}
 }
