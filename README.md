@@ -30,7 +30,14 @@ RIDE AND REQUEST TO BE CREATED!!!!
 * Utilities Class&nbsp;
 	* Random Wallet and Bank Balance Generators&nbsp;
 
-# I Necessary Checks to be implemented:
+# I Necessary Things to be implemented:
+* HashMap for the storing locations with the coordinates&nbsp;
+* Random Location allocation for Customer&nbsp;
+* Random Location allocation for Drivers&nbsp;
+* Random Reallocation of Driver Locations&nbsp;
+* Database Tables for Customer, Driver, Location, Wallet, Ride, Bank Acc, Cab&nbsp;
+
+# II Necessary Checks to be implemented:
 * pin : BankAccount - 4 digit number&nbsp;
 * rating : Driver - b/w 0 and 5&nbsp;
 * cabNumber : Cab - Vehicle Number Regex, Unique&nbsp;
