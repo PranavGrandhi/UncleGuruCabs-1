@@ -34,3 +34,5 @@ RIDE AND REQUEST TO BE CREATED!!!!
 * pin : BankAccount - 4 digit number&nbsp;
 * rating : Driver - b/w 0 and 5&nbsp;
 * cabNumber : Cab - Vehicle Number Regex, Unique&nbsp;
+* In general - make constructor accept objects&nbsp;
+

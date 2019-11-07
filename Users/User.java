@@ -28,8 +28,12 @@ abstract class User{
 	}
 
 	// Password testing for login
-	boolean testPassword(String password) {
-		return (password == this.password);
+	boolean testLogin(String uniqueId, String password) throws LoginErrorException{
+		if((uniqueId == this.uniqueId) && (password == this.password)){
+			return true;
+		} else{
+			throw new LoginErrorException();
+		}
 	}
 
 	// Change password method

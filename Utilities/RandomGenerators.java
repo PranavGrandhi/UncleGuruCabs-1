@@ -5,6 +5,8 @@ public class RandomGenerators{
 	* Random Generators for the Users Package.
 	* 
 	*/
+
+	//String array consisting of cab types in first row with respective charges in second row
 	final static String[][] cabTypes = {{"Mini", "Micro", "Sedan", "SUV"},{"10", "20", "50", "60"}};
 
 	public static double generateBankBalance(){
@@ -21,6 +23,7 @@ public class RandomGenerators{
 		return (low + (Math.random() * (high - low)));
 	}
 
+	//Using Math.random() to output a cab type, cab charge pair
 	public static String[] setCabType(){
 		int numberOfParameters = cabTypes.length;
 		int numberOfTypes = cabTypes[numberOfParameters-1].length;

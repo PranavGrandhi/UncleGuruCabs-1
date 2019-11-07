@@ -4,7 +4,7 @@ import Location.*;
 
 public class Customer extends User{
 	boolean isOnRide;
-	Wallet wallet;
+	public Wallet wallet;
 	BankAccount bankAccount;
 	public CustomerLocation customerLocation;
 
@@ -28,6 +28,10 @@ public class Customer extends User{
 	*/
 	public double getDriverDistance(Driver driver){
 		return customerLocation.getDistance(driver);
+	}
+
+	public double getDestinationDistance(PlacesLocation placesLocation){
+		return customerLocation.getDistance(placesLocation);
 	}
 
 

@@ -21,16 +21,14 @@ class Demo{
 		System.out.println("\nDriver Created.");
 		System.out.println(driver);
 
-
+		PlacesLocation pL = new PlacesLocation(2, 1);
+		System.out.println("Normal Nigger!!");
 		System.out.println(customer.getDriverDistance(driver));
 		System.out.println(driver.getCustomerDistance(customer));
 
-		String output[] = RandomGenerators.setCabType();
-		System.out.println(output.length);
-		for (String s : output) {
-			System.out.println(s);
-		}
-		// RandomGenerators.setCabType();
+		System.out.println("Places Nigger!!");
+		System.out.println(customer.getDestinationDistance(pL));
+		System.out.println(driver.getDestinationDistance(pL));
 
 	}
 }
