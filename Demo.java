@@ -1,5 +1,6 @@
 import Users.*;
 import Location.*;
+import Utilities.*;
 import java.util.*;
 
 class Demo{
@@ -23,6 +24,13 @@ class Demo{
 
 		System.out.println(customer.getDriverDistance(driver));
 		System.out.println(driver.getCustomerDistance(customer));
+
+		String output[] = RandomGenerators.setCabType();
+		System.out.println(output.length);
+		for (String s : output) {
+			System.out.println(s);
+		}
+		// RandomGenerators.setCabType();
 
 	}
 }

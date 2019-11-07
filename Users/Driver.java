@@ -6,6 +6,7 @@ public class Driver extends User{
 	boolean isOnRide;
 	Wallet wallet;
 	public DriverLocation driverLocation;
+	// Cab cab = new Cab();
 
 	private Driver(String uniqueId, String name, String phoneNumber, String emailId, String password, int x, int y){
 		super(uniqueId, name, phoneNumber, emailId, password);

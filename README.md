@@ -29,3 +29,8 @@ RIDE AND REQUEST TO BE CREATED!!!!
 # 4 Utilities:
 * Utilities Class&nbsp;
 	* Random Wallet and Bank Balance Generators&nbsp;
+
+# I Necessary Checks to be implemented:
+* pin : BankAccount - 4 digit number&nbsp;
+* rating : Driver - b/w 0 and 5&nbsp;
+* cabNumber : Cab - Vehicle Number Regex, Unique&nbsp;

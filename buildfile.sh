@@ -6,6 +6,7 @@ currWorkingDir=$(pwd)
 dirInCurrDir='DatabaseConnection Location Users Utilities'
 numOfDir=0
 
+# Checking for the directories.
 for dir in $dirInCurrDir
 do
 	if [ -d $dir ]
