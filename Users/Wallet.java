@@ -9,6 +9,10 @@ public class Wallet{
 		this.balance = RandomGenerators.generateWalletBalance();
 	}
 
+	Wallet(double balance){
+		this.balance = balance;
+	}
+
 	// Getter method for wallet balance
 	double getWalletBalance(){
 		return balance;

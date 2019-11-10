@@ -1,0 +1,13 @@
+CREATE DATABASE JavaProjectTest;
+
+CREATE TABLE placesLocation( ID int NOT NULL AUTO_INCREMENT, location varchar(30) NOT NULL, xCoor int NOT NULL, yCoor int NOT NULL);
+
+INSERT INTO placesLocation(location, xCoor, yCoor) VALUES ('BPHC', 100, 380),('Alankritha', 154, 323),('Paradise', 421, 206),('Airport', 457, 89);('Barbeque Nation', 266, 141), ('INOX GVK One', 266, 200),('Secunderabad Station', 80, 80),('Hussain Sagar', 400, 400);
+
+CREATE TABLE bankAccount(ID int NOT NULL AUTO_INCREMENT, balance float(4) NOT NULL, pin int NOT NULL, PRIMARY KEY (ID));
+
+CREATE TABLE cab(ID int NOT NULL AUTO_INCREMENT, cabName varchar(10) NOT NULL, cabType varchar(10) NOT NULL, cabCharge float(2) NOT NULL);
+
+CREATE TABLE customer(ID int NOT NULL AUTO_INCREMENT, username varchar(100) NOT NULL, userId varchar(50) NOT NULL UNIQUE, emailId varchar(100) NOT NULL, phoneNumber varchar(100) NOT NULL, password varchar(100) NOT NULL, walletBalance float(4) NOT NULL, bankAccount int, PRIMARY KEY (ID), FOREIGN KEY (bankAccount) REFERENCES bankAccount(ID));
+
+CREATE TABLE driver(ID int NOT NULL AUTO_INCREMENT, username varchar(100) NOT NULL, userId varchar(50) NOT NULL, emailId varchar(100) NOT NULL, phoneNumber varchar(10) NOT NULL, password varchar(100) NOT NULL, walletBalance float(4) NOT NULL, cab int, PRIMARY KEY (ID), FOREIGN KEY (cab) REFERENCES cab(ID));

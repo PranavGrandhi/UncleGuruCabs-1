@@ -1,11 +1,11 @@
 package Users;
 
 abstract class User{
-	private String uniqueId, userName, phoneNumber, emailId, password;
+	private String userId, userName, phoneNumber, emailId, password;
 
 	// Constructor
-	User(String uniqueId, String userName, String phoneNumber, String emailId, String password) {
-		this.uniqueId = uniqueId;
+	User(String userId, String userName, String phoneNumber, String emailId, String password) {
+		this.userId = userId;
 		this.userName = userName;
 		this.phoneNumber = phoneNumber;
 		this.emailId = emailId;
@@ -15,7 +15,7 @@ abstract class User{
 
 	// Getter methods
 	public String getUniqueId() {
-		return uniqueId;
+		return userId;
 	}
 	public String getUsername() {
 		return userName;
@@ -28,8 +28,8 @@ abstract class User{
 	}
 
 	// Password testing for login
-	boolean testLogin(String uniqueId, String password) throws LoginErrorException{
-		if((uniqueId == this.uniqueId) && (password == this.password)){
+	boolean testLogin(String userId, String password) throws LoginErrorException{
+		if((userId == this.userId) && (password == this.password)){
 			return true;
 		} else{
 			throw new LoginErrorException();

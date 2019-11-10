@@ -1,11 +1,14 @@
 # UncleGuruCabs
 Uncle Guru Cabs Pvt.Ltd.
 
-NONE OF IT HAS BEEN COMPILED OR TESTED !!!!!!!
+
+
 
 RIDE AND REQUEST TO BE CREATED!!!!
 
 # List of Packages:
+# Driver for the program's JDBC:
+* mysql-connector-java-8.0.18.jar
 
 # 1 Users:
 1) Abstarct User Class&nbsp;
@@ -25,6 +28,24 @@ RIDE AND REQUEST TO BE CREATED!!!!
 
 # 3 DatabaseConnection:
 * DatabaseConnection Class&nbsp;
+* Required Databases&nbsp;
+	* Places Location - Pk, Place Name, X coordinate, Y coordinate&nbsp;
+		* (100, 380)  - BPHC&nbsp;
+		* (154, 323)  - Alankritha&nbsp;
+		* (421, 206)  - Paradise&nbsp;
+		* (457, 89)   - Airport&nbsp;
+		* (266, 141)  - Barbeque Nation&nbsp;
+		* (266, 200)  - INOX GVK One&nbsp;
+		* (80, 80)    - Secunderabad Station&nbsp;
+		* (400, 400)  - Hussain Sagar&nbsp;
+	* BankAccount     - Pk, Balance, Pin&nbsp;
+	* Cab             - Pk, Cab Number, Cab Type, Cab Charge&nbsp;
+	* Customer        - Pk, Username, UniqueId EmailID, PhoneNumber, Password, walletBalance, Pk(BankAccount)&nbsp;
+	* Driver          - Pk, Username, UniqueId, EmailID, PhoneNumber, Password, walletBalance, Pk(Cab)&nbsp;
+	* Request         - Pk, TimeStamp, Customer, Source[Pk(Places Location)], Time(Sorted), Destination[Pk(Places Location)], Satsfied&nbsp;
+		* Synchronized - Driver is Shared Resource&nbsp;
+	* Ride            - Pk, Customer, Driver, Source[Pk(Places Location)], Destination[Pk(Places Location)], Duration&nbsp;
+	
 
 # 4 Utilities:
 * Utilities Class&nbsp;

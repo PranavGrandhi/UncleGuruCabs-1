@@ -8,18 +8,31 @@ public class Customer extends User{
 	BankAccount bankAccount;
 	public CustomerLocation customerLocation;
 
-	// Make Constructor take Wallet, BankAccount and Location as inputs.
-	private Customer(String uniqueId, String name, String phoneNumber, String emailId, String password, int pin, int x, int y){
-		super(uniqueId, name, phoneNumber, emailId, password);
+	// To Register new customer.
+	private Customer(String userId, String username, String phoneNumber, String emailId, String password, int pin){
+		super(userId, username, phoneNumber, emailId, password);
 		isOnRide = false;
 		wallet = new Wallet();
 		bankAccount = new BankAccount(pin);
-		customerLocation = new CustomerLocation(x, y);
+		customerLocation = RandomLocGenerator.setRandomCustomerLocation();
+	}
+	// Customer Object Creating Method
+	public static Customer createCustomer(String userId, String username, String phoneNumber, String emailId, String password, int pin){
+		return new Customer(userId, username, phoneNumber, emailId, password, pin);
 	}
 
+
+	// To create an object of existing customer.
+	private Customer(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, double bankBalance, int pin){
+		super(userId, username, phoneNumber, emailId, password);
+		isOnRide = false;
+		wallet = new Wallet(walletBalance);
+		bankAccount = new BankAccount(bankBalance, pin);
+		customerLocation = RandomLocGenerator.setRandomCustomerLocation();
+	}
 	// Customer Object Creating Method
-	public static Customer createCustomer(String uniqueId, String name, String phoneNumber, String emailId, String password, int pin, int x, int y){
-		return new Customer(uniqueId, name, phoneNumber, emailId, password, pin, x , y);
+	public static Customer createCustomer(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, double bankBalance, int pin){
+		return new Customer(userId, username, phoneNumber, emailId, password, walletBalance, bankBalance, pin);
 	}
 
 	/* 
@@ -33,7 +46,17 @@ public class Customer extends User{
 	public double getDestinationDistance(PlacesLocation placesLocation){
 		return customerLocation.getDistance(placesLocation);
 	}
-
+	public double getBankBalance(int pin){
+		try{
+			return bankAccount.getBankBalance(pin);	
+		} catch (InvalidPINException ipe){
+			System.out.println("Customer Bank Balance Method Failed!!");
+			return 0.00;
+		}
+	}
+	public double getWalletBalance(){
+		return wallet.getWalletBalance();
+	}
 
 
 	// Overridden Object Class toString Method

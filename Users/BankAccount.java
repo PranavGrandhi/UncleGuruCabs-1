@@ -11,6 +11,11 @@ class BankAccount{
 		balance = RandomGenerators.generateBankBalance();
 	}
 
+	BankAccount(double balance, int pin){
+		this.pin = pin;
+		this.balance = balance;
+	}
+
 	boolean verifyPin(int pin){
 		return (pin == this.pin);
 	}

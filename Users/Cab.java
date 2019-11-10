@@ -18,4 +18,8 @@ class Cab{
 		return new Cab("TS01A71499", cabType[0], Integer.parseInt(cabType[1]));
 	}
 
+	public static Cab createCab(String cabNumber, String cabType, int cabCharge){
+		return new Cab(cabNumber, cabType, cabCharge);
+	}
+
 }

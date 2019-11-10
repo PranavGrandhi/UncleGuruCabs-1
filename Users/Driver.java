@@ -8,18 +8,33 @@ public class Driver extends User{
 	public DriverLocation driverLocation;
 	Cab cab;
 
-	private Driver(String uniqueId, String name, String phoneNumber, String emailId, String password, int x, int y){
-		super(uniqueId, name, phoneNumber, emailId, password);
+	private Driver(String userId, String username, String phoneNumber, String emailId, String password){
+		super(userId, username, phoneNumber, emailId, password);
 		rating = 0;
 		isOnRide = false;
 		wallet = new Wallet();
-		driverLocation = new DriverLocation(x, y);
+		driverLocation = RandomLocGenerator.setRandomDriverLocation();
 		cab = Cab.createCab();
 	}
-	
-	public static Driver createDriver(String uniqueId, String name, String phoneNumber, String emailId, String password, int x, int y){
-		return new Driver(uniqueId, name, phoneNumber, emailId, password, x , y);
+	// Driver Object Creating Method	
+	public static Driver createDriver(String userId, String username, String phoneNumber, String emailId, String password){
+		return new Driver(userId, username, phoneNumber, emailId, password);
 	}
+
+
+	private Driver(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, String cabNumber, String cabType, int cabCharge){
+		super(userId, username, phoneNumber, emailId, password);
+		isOnRide = false;
+		wallet = new Wallet(walletBalance);
+		cab = Cab.createCab(cabNumber, cabType, cabCharge);
+		driverLocation = RandomLocGenerator.setRandomDriverLocation();
+	}
+	// Driver Object Creating Method
+	public static Driver createCustomer(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, String cabNumber, String cabType, int cabCharge){
+		return new Driver(userId, username, phoneNumber, emailId, password, walletBalance, cabNumber, cabType, cabCharge);
+	}
+
+
 
 	public double getCustomerDistance(Customer customer){
 		return driverLocation.getDistance(customer);
