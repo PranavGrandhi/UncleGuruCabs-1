@@ -23,15 +23,22 @@ class Demo{
 		String customerPassword = "12345678";
 		int customerPin = 1234;
 
+
+		String driverUserId = "driver123";
+		String driverUsername = "driver";
+		String driverphoneNumber = "9999999999";
+		String driverEmailId = "driver@driver.com";
+		String driverPassword = "12345678";
+
 		////////// TESTING CUSTOMER CLASS //////////
 		Customer customer = Customer.createCustomer(customerUserId, customerUsername, customerphoneNumber, customerEmailId, customerPassword, customerPin);
 		System.out.println("\nTest Customer Deets: ");
 		System.out.println(customer);
 
-		// ////////// TESTING DRIVER CLASS //////////
-		// Driver driver = Driver.createDriver("userid", "username", "phone", "emailID", "password", 4, 4);
-		// System.out.println("\nDriver Created.");
-		// System.out.println(driver);
+		////////// TESTING DRIVER CLASS //////////
+		Driver driver = Driver.createDriver(driverUserId, driverUsername, driverphoneNumber, driverEmailId, driverPassword);
+		System.out.println("\nDriver Created.");
+		System.out.println(driver);
 
 		// PlacesLocation pL = new PlacesLocation(2, 1);
 		// System.out.println("Normal Nigger!!");
@@ -52,5 +59,17 @@ class Demo{
 
 		System.out.println("Printing DB created customer: ");
 		System.out.println(dbCustomer);
+
+
+		System.out.println("DB Registering new driver: ");
+		db.registerNewDriver(driverUserId, driverUsername, driverphoneNumber, driverEmailId, driverPassword);
+		System.out.println("DB Registering done.\n");
+
+		System.out.println("DB Logging in driver: ");
+		Driver dbDriver = db.loginDriver(driverUserId, driverPassword);
+		System.out.println("DB Logging in done.\n");
+
+		System.out.println("Printing DB created driver: ");
+		System.out.println(dbDriver);
 	}
 }

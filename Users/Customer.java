@@ -1,6 +1,6 @@
 package Users;
 import Location.*;
-
+import Utilities.*;
 
 public class Customer extends User{
 	boolean isOnRide;
@@ -14,7 +14,7 @@ public class Customer extends User{
 		isOnRide = false;
 		wallet = new Wallet();
 		bankAccount = new BankAccount(pin);
-		customerLocation = RandomLocGenerator.setRandomCustomerLocation();
+		customerLocation = RandomGenerators.setRandomCustomerLocation();
 	}
 	// Customer Object Creating Method
 	public static Customer createCustomer(String userId, String username, String phoneNumber, String emailId, String password, int pin){
@@ -28,7 +28,7 @@ public class Customer extends User{
 		isOnRide = false;
 		wallet = new Wallet(walletBalance);
 		bankAccount = new BankAccount(bankBalance, pin);
-		customerLocation = RandomLocGenerator.setRandomCustomerLocation();
+		customerLocation = RandomGenerators.setRandomCustomerLocation();
 	}
 	// Customer Object Creating Method
 	public static Customer createCustomer(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, double bankBalance, int pin){
@@ -39,7 +39,14 @@ public class Customer extends User{
 		Cabbooking method has to be created that creates a request
 		object and pushes into a queue.
 	*/
-	public double getDriverDistance(Driver driver){
+	public Request sendCabRequest(PlacesLocation source, PlacesLocation destination){
+		return Request.postCabRequest(this, source, destination);
+	}
+
+
+
+	// Distance, Wallet Balance and Bank Balance Getters
+	public double static getDriverDistance(Driver driver){
 		return customerLocation.getDistance(driver);
 	}
 

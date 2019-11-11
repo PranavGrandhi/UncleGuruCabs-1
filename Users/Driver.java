@@ -6,14 +6,14 @@ public class Driver extends User{
 	boolean isOnRide;
 	Wallet wallet;
 	public DriverLocation driverLocation;
-	Cab cab;
+	public Cab cab;
 
 	private Driver(String userId, String username, String phoneNumber, String emailId, String password){
 		super(userId, username, phoneNumber, emailId, password);
 		rating = 0;
 		isOnRide = false;
 		wallet = new Wallet();
-		driverLocation = RandomLocGenerator.setRandomDriverLocation();
+		driverLocation = RandomGenerators.setRandomDriverLocation();
 		cab = Cab.createCab();
 	}
 	// Driver Object Creating Method	
@@ -27,10 +27,10 @@ public class Driver extends User{
 		isOnRide = false;
 		wallet = new Wallet(walletBalance);
 		cab = Cab.createCab(cabNumber, cabType, cabCharge);
-		driverLocation = RandomLocGenerator.setRandomDriverLocation();
+		driverLocation = RandomGenerators.setRandomDriverLocation();
 	}
 	// Driver Object Creating Method
-	public static Driver createCustomer(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, String cabNumber, String cabType, int cabCharge){
+	public static Driver createDriver(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, String cabNumber, String cabType, int cabCharge){
 		return new Driver(userId, username, phoneNumber, emailId, password, walletBalance, cabNumber, cabType, cabCharge);
 	}
 
@@ -43,6 +43,20 @@ public class Driver extends User{
 	public double getDestinationDistance(PlacesLocation placesLocation){
 		return driverLocation.getDistance(placesLocation);
 	}
+	public String getCabNumber(){
+		return cab.cabNumber;
+	}
+	public String getCabType(){
+		return cab.cabType;
+	}
+	public int getCabCharge(){
+		return cab.cabCharge;
+	}
+	public double getWalletBalance(){
+		return wallet.getWalletBalance();
+	}
+
+
 
 	public String toString(){
 		return ("Hello, I'm " + this.getUsername() + " and I'm a driver with ID " + this.getUniqueId() + " and Wallet Balance " + wallet.getWalletBalance() + " at Location " + this.driverLocation.getX() + "," +  this.driverLocation.getY() + " in the cab with number " + this.cab.cabNumber + " which is of type " + this.cab.cabType + " at price " + this.cab.cabCharge);

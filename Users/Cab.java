@@ -22,4 +22,6 @@ class Cab{
 		return new Cab(cabNumber, cabType, cabCharge);
 	}
 
+
+	
 }
