@@ -1,4 +1,5 @@
 package DatabaseConnection;
+import java.util.*;
 import java.sql.*;
 import Users.*;
 import Rides.*;
@@ -24,7 +25,7 @@ public class DatabaseConnection {
 	// DRIVER RELATED SQL STATEMENTS
 	private static PreparedStatement readDriverLoginStmt = null;
 	private static PreparedStatement readDriverStmt = null;
-	private static PreparedStatement getAvailableDriverStmt = null;
+	private static PreparedStatement readAvailableDriverStmt = null;
 	private static PreparedStatement insertDriverStmt = null;
 	private static PreparedStatement insertDriverWalletBalanceStmt = null;
 	private static PreparedStatement insertDriverBankBalanceStmt = null;
@@ -218,35 +219,40 @@ public class DatabaseConnection {
     	return null;
     }
 
-    public void registerNewDriver(String userId, String username, String phoneNumber, String emailId, String password){
+    public void registerNewDriver(String userId, String username, String phoneNumber, String emailId, String password, int pin){
     	System.out.println("\nRegistering a New User: ");
     	try{
     		// username, userId, emailId, phoneNumber, password, walletBalance, bankAccount(int)
-    		Users.Driver driver = Users.Driver.createDriver(username, userId, emailId, phoneNumber, password);
+    		Users.Driver driver = Users.Driver.createDriver(username, userId, emailId, phoneNumber, password, pin);
     		double walletBalance = driver.getWalletBalance();
     		String cabNumber = driver.getCabNumber();
-			String cabType = driver.getCabType();
-			int cabCharge = driver.getCabCharge();
+                String cabType = driver.getCabType();
+                int cabCharge = driver.getCabCharge();
 
-			insertCabStmt.setString(1, cabNumber);
-			insertCabStmt.setString(2, cabType);
-			insertCabStmt.setInt(3, cabCharge);
-			insertCabStmt.setString(4, userId);
-			insertCabStmt.executeUpdate();
-			readCabUserIDStmt.setString(1, userId);
-			rs = readCabUserIDStmt.executeQuery();
+                insertCabStmt.setString(1, cabNumber);
+                insertCabStmt.setString(2, cabType);
+                insertCabStmt.setInt(3, cabCharge);
+                insertCabStmt.setString(4, userId);
+                insertCabStmt.executeUpdate();
+                readCabUserIDStmt.setString(1, userId);
+                rs = readCabUserIDStmt.executeQuery();
 
-			if(rs.next()){
-				insertDriverStmt.setString(1, username);
-				insertDriverStmt.setString(2, userId);
-				insertDriverStmt.setString(3, emailId);
-				insertDriverStmt.setString(4, phoneNumber);
-				insertDriverStmt.setString(5, password);
-				insertDriverStmt.setDouble(6, walletBalance);
-				insertDriverStmt.setInt(7, rs.getInt("ID"));
-				insertDriverStmt.executeUpdate();
-			}
-			System.out.println("Account Registered!!");
+                if(rs.next()){
+                        insertDriverStmt.setString(1, username);
+                        insertDriverStmt.setString(2, userId);
+                        insertDriverStmt.setString(3, emailId);
+                        insertDriverStmt.setString(4, phoneNumber);
+                        insertDriverStmt.setString(5, password);
+                        insertDriverStmt.setDouble(6, walletBalance);
+                        insertDriverStmt.setInt(7, rs.getInt("ID"));
+                        boolean isOnRide = false;
+                        if(Math.random()>0.5){
+                            isOnRide = true;
+                        }
+                        insertDriverStmt.setBoolean(8, isOnRide);
+                        insertDriverStmt.executeUpdate();
+                }
+                System.out.println("Account Registered!!");
     	} catch(SQLException ex){
     		System.out.println("Register Method got some problem!");
     		ex.printStackTrace();
@@ -256,11 +262,14 @@ public class DatabaseConnection {
 
     public ArrayList<Users.Driver> getAvailableDrivers() throws SQLException{
     	ArrayList<Users.Driver> drivers = new ArrayList<Users.Driver>();
+    	ResultSet rsCab = null;
     	rs = readAvailableDriverStmt.executeQuery();
     	if(rs.next()){
+    		String driverId = rs.getString("userId");
 			String username = rs.getString("username");
 			String phoneNumber = rs.getString("phoneNumber");
 			String emailId = rs.getString("emailId");
+			String password = rs.getString("password");
 			double walletBalance = rs.getDouble("walletBalance");
 			int cab = rs.getInt("cab");
 			readCabIDStmt.setString(1, (""+cab));
@@ -273,7 +282,7 @@ public class DatabaseConnection {
     		while(rs.next()){
     			drivers.add(Users.Driver.createDriver(driverId, username, phoneNumber, emailId, password, walletBalance, cabNumber, cabType, cabCharge));
     		}
-    		return userIDs;	
+    		return drivers;	
     	} else {
     		return null;
     	}

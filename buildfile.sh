@@ -23,30 +23,34 @@ else
 fi
 
 # Utilities Package
-$(javac Utilities/RandomGenerators.java)
+echo "Building the Utilities Package"
+javac Utilities/RandomGenerators.java
 # Location Package
-$(javac Location/Location.java)
-$(javac Location/PlacesLocation.java)
-$(javac Location/CustomerLocation.java)
-$(javac Location/DriverLocation.java)
-$(javac Location/RandomLocGenerator.java)
+echo "Building the Location Package"
+javac Location/Location.java
+javac Location/PlacesLocation.java
+javac Location/CustomerLocation.java
+javac Location/DriverLocation.java
+javac Location/RandomLocGenerator.java
 # Users Package
-$(javac Users/User.java)
-$(javac Users/InvalidPINException.java)
-$(javac Users/InadequateBankBalanceException.java)
-$(javac Users/InadequateWalletBalanceException.java)
-$(javac Users/Wallet.java)
-$(javac Users/BankAccount.java)
-$(javac Users/Cab.java)
-$(javac Users/Driver.java)
-$(javac Users/Customer.java)
+echo "Building the Users Package"
+javac Users/User.java
+javac Users/InvalidPINException.java
+javac Users/InadequateBankBalanceException.java
+javac Users/InadequateWalletBalanceException.java
+javac Users/Wallet.java
+javac Users/BankAccount.java
+javac Users/Cab.java
+javac Users/Driver.java
+javac Users/Customer.java
 # Rides Package
 # $(javac Rides/Request.java)
 # $(javac Rides/RequestValidator.java)
 # $(javac Rides/Ride.java)
 # Database Connecion
+echo "Building the DatabaseConnection Package"
 $(javac DatabaseConnection/DatabaseConnection.java)
 
 # Running the program:
-$(javac Demo.java)
-$(java Demo)
+# $(javac Demo.java)
+# $(java Demo)

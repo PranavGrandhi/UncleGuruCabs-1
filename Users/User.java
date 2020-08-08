@@ -38,7 +38,7 @@ abstract class User{
 
 	// Change password method
 	void setPassword(String currentPassword, String newPassword){
-		if(currentPassword == password){
+		if(password.equals(currentPassword)){
 			password = newPassword;
 		}
 	}

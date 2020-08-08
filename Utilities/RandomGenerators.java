@@ -1,4 +1,5 @@
 package Utilities;
+import Location.*;
 
 public class RandomGenerators{
 	/*

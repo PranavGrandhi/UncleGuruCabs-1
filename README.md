@@ -64,3 +64,10 @@ RIDE AND REQUEST TO BE CREATED!!!!
 * cabNumber : Cab - Vehicle Number Regex, Unique&nbsp;
 * In general - make constructor accept objects&nbsp;
 
+
+
+
+# PROBLEMS:
+* Multiple logins
+
+new String[] { "BPHC", "Alankritha Resort", "Barbeque Nation", "Inox GVK One", "Paradise Hotel", "Secunderabad Station", "Rajiv Gandhi International Airport" })
