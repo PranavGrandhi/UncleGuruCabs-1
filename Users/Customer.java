@@ -26,7 +26,7 @@ public class Customer extends User{
 	private Customer(String userId, String username, String phoneNumber, String emailId, String password, double walletBalance, double bankBalance, int pin){
 		super(userId, username, phoneNumber, emailId, password);
 		isOnRide = false;
-		wallet = new Wallet(walletBalance);
+		wallet = new Wallet(walletBalance, pin);
 		bankAccount = new BankAccount(bankBalance, pin);
 		customerLocation = RandomGenerators.setRandomCustomerLocation();
 	}
@@ -39,19 +39,19 @@ public class Customer extends User{
 		Cabbooking method has to be created that creates a request
 		object and pushes into a queue.
 	*/
-	public Request sendCabRequest(PlacesLocation source, PlacesLocation destination){
-		return Request.postCabRequest(this, source, destination);
-	}
+	// public Request sendCabRequest(PlacesLocation source, PlacesLocation destination){
+	// 	return Request.postCabRequest(this, source, destination);
+	// }
 
 
 
 	// Distance, Wallet Balance and Bank Balance Getters
-	public double static getDriverDistance(Driver driver){
+	public double getDriverDistance(Driver driver){
 		return customerLocation.getDistance(driver);
 	}
 
 	public double getDestinationDistance(PlacesLocation placesLocation){
-		return customerLocation.getDistance(placesLocation);
+		return this.customerLocation.getDistance(placesLocation);
 	}
 	public double getBankBalance(int pin){
 		try{

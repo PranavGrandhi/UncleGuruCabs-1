@@ -1,5 +1,6 @@
 package Users;
 import Location.*;
+import Utilities.*;
 
 public class Driver extends User{
 	int rating;
